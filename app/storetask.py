@@ -1,4 +1,4 @@
-from parser import LightParser
+from lightparser import LightParser
 from models import ExtractResponse, ExtractRequest
 
 
