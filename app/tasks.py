@@ -8,7 +8,7 @@ app = Celery('tasks')
 app.config_from_object('celeryconfig')
 
 
-@app.task
+@app.task(serializer='pickle')
 def ps_similar(request: ExtractRequest):
     result = StoreTask().similar(request)
     return result
