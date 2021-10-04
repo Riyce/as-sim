@@ -28,4 +28,5 @@ task_routes = {
 result_backend = 'rpc://'
 task_serializer = 'pickle'
 result_serializer = 'pickle'
+accept_content = ['pickle', 'json']
 enable_utc = True
