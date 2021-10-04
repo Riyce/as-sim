@@ -1,3 +1,4 @@
+from os import name
 from celery import Celery, shared_task
 
 from models import ExtractRequest
@@ -8,7 +9,7 @@ app = Celery('tasks')
 app.config_from_object('celeryconfig')
 
 
-@app.task(bind=True)
-def ps_similar(request: ExtractRequest):
+@app.task(bind=True, name='ps.similar')
+def ps_similar(self, request: ExtractRequest):
     result = StoreTask().similar(request)
     return result
