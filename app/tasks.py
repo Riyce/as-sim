@@ -1,10 +1,14 @@
-from celery import shared_task
+from celery import Celery, shared_task
 
-from models import ExtractRequest, ExtractResponse
+from models import ExtractRequest
 from storetask import StoreTask
 
 
-@shared_task(name="ps.similar", base=StoreTask)
-def ps_similar(self, request: ExtractRequest):
-    result = self.similar(request.id, request.similar_clp, request.country)
+app = Celery('tasks')
+app.config_from_object('celeryconfig')
+
+
+@app.task(bind=True)
+def ps_similar(request: ExtractRequest):
+    result = StoreTask().similar(request)
     return result
