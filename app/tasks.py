@@ -12,3 +12,8 @@ app.config_from_object('celeryconfig')
 def ps_similar(request: ExtractRequest):
     result = StoreTask().similar(request)
     return result
+
+
+@app.task(serializer='pickle')
+def test_task(name):
+    return f'Hello {name}'

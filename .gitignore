@@ -129,5 +129,5 @@ dmypy.json
 .pyre/
 pycurl-7.44.1-cp39-cp39-win_amd64.whl
 user-data.sh
-test.py
+test*
 venv/
