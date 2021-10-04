@@ -22,9 +22,6 @@ aws_secret_key = safequote(os.getenv('AWS_SECRET_ACCESS_KEY'))
 broker_url = "sqs://{aws_access_key}:{aws_secret_key}@".format(
     aws_access_key=aws_access_key, aws_secret_key=aws_secret_key,
 )
-task_routes = {
-    'ps.similar': {'queue': 'ps_similar'},
-}
 result_backend = 'rpc://'
 task_serializer = 'pickle'
 result_serializer = 'pickle'
